@@ -8,7 +8,105 @@ info:
 servers:
   - url: 'https://restdemo.miroslavholec.cz'
     description: Production
-paths: {}
+paths:
+  '/courses/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Detail kurzu
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+              examples:
+                Default:
+                  value:
+                    id: 1
+                    title: Školení REST API
+                    date: '2019-08-24T14:15:22Z'
+                    price: 999.9
+                    attendees: 10
+                Extra:
+                  value:
+                    id: 1999
+                    title: Školení REST API
+                    date: '2019-08-24T14:15:22Z'
+                    price: 9999
+                    attendees: 10
+      operationId: GetCourseById
+      x-stoplight:
+        id: bp1vxo6ynzaga
+      description: Detail kurzu...
 components:
-  schemas: {}
+  schemas:
+    Course:
+      title: Course
+      x-stoplight:
+        id: eg2nbiipp37xj
+      type: object
+      required:
+        - id
+        - title
+        - date
+        - price
+        - attendees
+      properties:
+        id:
+          type: integer
+          x-stoplight:
+            id: 4hpbgosj3p1tk
+          format: int32
+          default: 0
+          example: 1
+          minimum: 1
+        title:
+          type: string
+          x-stoplight:
+            id: pa710ba1yk7s5
+          example: Školení REST API
+          description: Titulek **jdkjds**
+        date:
+          type: string
+          x-stoplight:
+            id: g10n5anitvi7a
+          format: date-time
+        price:
+          type: number
+          x-stoplight:
+            id: nl6kv7reqo6l8
+          format: double
+          default: 0
+          example: 999.9
+          minimum: 1
+          maximum: 9999
+        attendees:
+          type: integer
+          x-stoplight:
+            id: 41wbpr6hyt04k
+          format: int32
+          default: 0
+          example: 10
+          minimum: 0
+          maximum: 15
+      x-examples:
+        Standard:
+          id: 1
+          title: Školení REST API
+          date: '2019-08-24T14:15:22Z'
+          price: 800
+          attendees: 10
+        Naplněný kurz:
+          id: 0
+          title: Školení REST API
+          date: '2019-08-24T14:15:22Z'
+          price: 900
+          attendees: 15
   securitySchemes: {}
