@@ -1,0 +1,14 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 0bonragm6uot6
+info:
+  title: Kurzy-v1
+  version: '1.0'
+  description: Kurzy
+servers:
+  - url: 'https://restdemo.miroslavholec.cz'
+    description: Production
+paths: {}
+components:
+  schemas: {}
+  securitySchemes: {}
